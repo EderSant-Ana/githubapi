@@ -35,6 +35,7 @@ bin
 .classpath
 .project
 .settings
+.env
 .springBeans
 spring-*/src/main/java/META-INF/MANIFEST.MF
 
