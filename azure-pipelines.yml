@@ -10,13 +10,15 @@ pool:
   name: Default
 
 variables:
-- group: vars
+- group: variables
 - name: BEARERTOKEN
   value: $[vars.token] # uses runtime expression
 - name: ORGANIZATION
   value: $[vars.org] # uses runtime expression
 
 steps:  
+- script: echo $(BEARERTOKEN) # uses macro syntax
+- script: echo $(ORGANIZATION) 
 - task: Maven@3
   displayName: 'Run tests'
   inputs:
