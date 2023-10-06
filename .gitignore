@@ -30,6 +30,7 @@ bin
 .classpath
 .project
 .settings
+.env
 
 # IDEA artifacts and output dirs
 *.iml
