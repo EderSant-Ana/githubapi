@@ -26,12 +26,12 @@ steps:
 
 - task: DownloadSecureFile@1
   inputs:
-    secureFile: '.env'    
-    
+    secureFile: '.env'
 - task: CopyFiles@2
   inputs:
-    Contents: '.env'
-    TargetFolder: '$(agent.builddirectory)'
+    SourceFolder: $(Agent.TempDirectory)
+    Contents: '**\.env'
+    TargetFolder: $(Build.SourcesDirectory)
 
 - task: Maven@3
   displayName: 'Run tests'   
