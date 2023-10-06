@@ -8,12 +8,16 @@ trigger:
 
 pool:
   name: Default
-
-variables: 
-  BEARERTOKEN: $(BEARERTOKEN)
-  ORGANIZATION: $(ORGANIZATION)
   
 steps:
+- task: PowerShell@2
+  inputs:
+      targetType: 'inline'
+      script: 
+        # Write your PowerShell commands here.        
+        Write-Host "##vso[task.setvariable BEARERTOKEN=$(BEARERTOKEN);]"
+        Write-Host "##vso[task.setvariable ORGANIZATION=$(ORGANIZATION);]"
+        
 - task: Maven@3
   inputs:
     mavenPomFile: 'pom.xml'
@@ -26,4 +30,4 @@ steps:
     mavenAuthenticateFeed: false
     effectivePomSkip: false
     sonarQubeRunAnalysis: false
-  
+
