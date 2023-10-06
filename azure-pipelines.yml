@@ -8,6 +8,10 @@ trigger:
 
 pool:
   name: Default
+
+variables: 
+  BEARERTOKEN: $(BEARERTOKEN)
+  ORGANIZATION: $(ORGANIZATION)
   
 steps:
 - task: Maven@3
@@ -22,3 +26,4 @@ steps:
     mavenAuthenticateFeed: false
     effectivePomSkip: false
     sonarQubeRunAnalysis: false
+  
