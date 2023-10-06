@@ -17,13 +17,13 @@ variables:
   value: $[variables.org] # uses runtime expression
 
 steps:  
-- script: echo $(BEARERTOKEN) # uses macro syntax
-- script: echo $(ORGANIZATION) 
+- script: echo $(token_github) # uses macro syntax
+- script: echo $(org_github) 
 
+- task: Maven@3
   env:
     BEARERTOKEN: $(token_github) 
     ORGANIZATION: $(org_github) 
-- task: Maven@3
   displayName: 'Run tests'
   inputs:
     mavenPomFile: 'pom.xml'
