@@ -12,9 +12,9 @@ pool:
 variables:
 - group: variables
 - name: BEARERTOKEN
-  value: $[vars.token] # uses runtime expression
+  value: $[variables.token] # uses runtime expression
 - name: ORGANIZATION
-  value: $[vars.org] # uses runtime expression
+  value: $[variables.org] # uses runtime expression
 
 steps:  
 - script: echo $(BEARERTOKEN) # uses macro syntax
