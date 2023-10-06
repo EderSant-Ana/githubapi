@@ -6,15 +6,16 @@
 trigger:
 - main
 
+variables:
+  BEARERTOKEN: $(BEARERTOKEN)
+  ORGANIZATION: $(ORGANIZATION)
+
 pool:
   name: Default
   
 steps:
 - task: Maven@3
   displayName: 'Run tests'
-  env:
-    BEARERTOKEN: $(BEARERTOKEN)
-    ORGANIZATION: $(ORGANIZATION)
   inputs:
     mavenPomFile: 'pom.xml'
     goals: 'test'
@@ -26,6 +27,5 @@ steps:
     mavenAuthenticateFeed: false
     effectivePomSkip: false
     sonarQubeRunAnalysis: false
-- bash: echo $(BEARERTOKEN)  
-- bash: echo $(ORGANIZATION)
+
 
