@@ -7,16 +7,18 @@ trigger:
 - main
 
 pool:
-  vmImage: ubuntu-latest
-
+  name: Default
+  
 steps:
-- task: Maven@4
+- task: Maven@3
   inputs:
     mavenPomFile: 'pom.xml'
     goals: 'test'
     publishJUnitResults: false
     javaHomeOption: 'JDKVersion'
-    mavenVersionOption: 'Default'
+    mavenVersionOption: 'Path'
+    mavenDirectory: $(path)
+    mavenSetM2Home: true
     mavenAuthenticateFeed: false
     effectivePomSkip: false
     sonarQubeRunAnalysis: false
