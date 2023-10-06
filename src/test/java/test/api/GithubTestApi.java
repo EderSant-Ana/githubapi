@@ -6,7 +6,6 @@ import org.testng.annotations.Test;
 import io.github.cdimascio.dotenv.Dotenv;
 
 
-
 public class GithubTestApi {
 
 	public static final String URL = "https://api.github.com/orgs/";
@@ -23,8 +22,7 @@ public class GithubTestApi {
 		.when()
 				.get(URL + ORGANIZATION + "/repos")
 		.then()
-			.log()
-			.all()
+			.log().all()
 			.statusCode(200)
 			.body("size()", greaterThan(0));
 
