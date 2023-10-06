@@ -6,14 +6,21 @@
 trigger:
 - main
 
-variables:
-  BEARERTOKEN: $(BEARERTOKEN)
-  ORGANIZATION: $(ORGANIZATION)
-
 pool:
   name: Default
   
 steps:
+
+- task: PowerShell@2
+  displayName: Add the username as an environment variable so the tests can find it.
+  inputs:
+    targetType: 'inline'
+    script: |
+      Write-Host "Making the BEARERTOKEN available as an environment variable."
+      Write-Host "##vso[task.setvariable variable=SAUCE_USERNAME;]$(BEARERTOKEN)"
+      Write-Host "Making the ORGANIZATION available as an environment variable."
+      Write-Host "##vso[task.setvariable variable=ORGANIZATION;]$(ORGANIZATION)"
+
 - task: Maven@3
   displayName: 'Run tests'
   inputs:
