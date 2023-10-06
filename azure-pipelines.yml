@@ -11,14 +11,18 @@ pool:
 
 variables:
 - group: variables
-- name: BEARERTOKEN
+- name: token_github
   value: $[variables.token] # uses runtime expression
-- name: ORGANIZATION
+- name: org_github
   value: $[variables.org] # uses runtime expression
 
 steps:  
 - script: echo $(BEARERTOKEN) # uses macro syntax
 - script: echo $(ORGANIZATION) 
+
+  env:
+    BEARERTOKEN: $(token_github) 
+    ORGANIZATION: $(org_github) 
 - task: Maven@3
   displayName: 'Run tests'
   inputs:
