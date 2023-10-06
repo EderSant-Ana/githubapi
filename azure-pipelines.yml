@@ -23,12 +23,18 @@ steps:
     echo "my environment variable is %token%"    
     echo '##vso[task.setvariable variable=org]$(org_github)  
     echo "my environment variable is %org%"
+
+- task: DownloadSecureFile@1
+  inputs:
+    secureFile: '.env'    
     
+- task: CopyFiles@2
+  inputs:
+    Contents: '.env'
+    TargetFolder: '$(agent.builddirectory)'
+
 - task: Maven@3
   displayName: 'Run tests'   
-  env:
-    BEARERTOKEN: $(token) 
-    ORGANIZATION: $(org) 
   inputs:    
     mavenPomFile: 'pom.xml'
     goals: 'test'
