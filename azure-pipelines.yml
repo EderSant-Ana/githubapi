@@ -10,15 +10,11 @@ pool:
   name: Default
   
 steps:
-- task: PowerShell@2
-  inputs:
-      targetType: 'inline'
-      script: 
-        # Write your PowerShell commands here.        
-        Write-Host "##vso[task.setvariable BEARERTOKEN=$(BEARERTOKEN);]"
-        Write-Host "##vso[task.setvariable ORGANIZATION=$(ORGANIZATION);]"
-        
 - task: Maven@3
+  displayName: 'Run tests'
+  env:
+    BEARERTOKEN: $(BEARERTOKEN)
+    ORGANIZATION: $(ORGANIZATION)
   inputs:
     mavenPomFile: 'pom.xml'
     goals: 'test'
