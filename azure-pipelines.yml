@@ -9,20 +9,20 @@ trigger:
 pool:
   name: Default
 
-variables:
-- group: variables
-- name: token_github
-  value: $[variables.token] # uses runtime expression
-- name: org_github
-  value: $[variables.org] # uses runtime expression
+# variables:
+# - group: variables
+# - name: token_github
+#   value: $[variables.token] # uses runtime expression
+# - name: org_github
+#   value: $[variables.org] # uses runtime expression
 
 steps:  
 
-- script: |
-    echo '##vso[task.setvariable variable=token]$(token_github)  
-    echo "my environment variable is %token%"    
-    echo '##vso[task.setvariable variable=org]$(org_github)  
-    echo "my environment variable is %org%"
+# - script: |
+#     echo '##vso[task.setvariable variable=token]$(token_github)  
+#     echo "my environment variable is %token%"    
+#     echo '##vso[task.setvariable variable=org]$(org_github)  
+#     echo "my environment variable is %org%"
 
 - task: DownloadSecureFile@1
   inputs:
