@@ -17,7 +17,6 @@ variables:
   value: $[variables.org] # uses runtime expression
 
 steps:  
-
 - task: Maven@3
   displayName: 'Run tests'
   env:
@@ -35,9 +34,6 @@ steps:
     effectivePomSkip: false
     sonarQubeRunAnalysis: false
 
-- script: echo $(token_github) 
-- script: echo $(org_github) 
-- script: echo $(BEARERTOKEN) 
-- script: echo $(ORGANIZATION) 
+
 
 
