@@ -18,11 +18,11 @@ variables:
 
 steps:  
 - script: |
-    echo '##vso[task.setvariable variable=BEARERTOKEN]$(token_github)'  
+    echo '##vso[task.setvariable variable=BEARERTOKEN]$(token_github)  
 - script: |
     echo "my environment variable is %BEARERTOKEN%"    
 - script: |
-    echo '##vso[task.setvariable variable=ORGANIZATION]$(org_github)'  
+    echo '##vso[task.setvariable variable=ORGANIZATION]$(org_github)  
 - script: |
     echo "my environment variable is %ORGANIZATION%"
 - task: Maven@3
