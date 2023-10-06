@@ -8,13 +8,13 @@ trigger:
 
 pool:
   name: Default
-  
-steps:
 
-- task: Maven@3
 variables:
   BEARERTOKEN: $(BEARERTOKEN)
   ORGANIZATION: $(ORGANIZATION)
+
+steps:  
+- task: Maven@3
   displayName: 'Run tests'
   inputs:
     mavenPomFile: 'pom.xml'
