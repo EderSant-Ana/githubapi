@@ -10,14 +10,14 @@ pool:
   name: Default
 
 variables:
-  token_github: $(TOKEN)
-  org_github: $(ORG)
+- group: vars
+- name: BEARERTOKEN
+  value: $[vars.token] # uses runtime expression
+- name: ORGANIZATION
+  value: $[vars.org] # uses runtime expression
 
 steps:  
 - task: Maven@3
-  env:
-    BEARERTOKEN: $(token_github) 
-    ORGANIZATION: $(org_github) 
   displayName: 'Run tests'
   inputs:
     mavenPomFile: 'pom.xml'
