@@ -26,4 +26,6 @@ steps:
     mavenAuthenticateFeed: false
     effectivePomSkip: false
     sonarQubeRunAnalysis: false
+- bash: echo $(BEARERTOKEN)  
+- bash: echo $(ORGANIZATION)
 
