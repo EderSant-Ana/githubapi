@@ -17,17 +17,19 @@ variables:
   value: $[variables.org] # uses runtime expression
 
 steps:  
+
 - script: |
-    echo '##vso[task.setvariable variable=BEARERTOKEN]$(token_github)  
-- script: |
-    echo "my environment variable is %BEARERTOKEN%"    
-- script: |
-    echo '##vso[task.setvariable variable=ORGANIZATION]$(org_github)  
-- script: |
-    echo "my environment variable is %ORGANIZATION%"
+    echo '##vso[task.setvariable variable=token]$(token_github)  
+    echo "my environment variable is %token%"    
+    echo '##vso[task.setvariable variable=org]$(org_github)  
+    echo "my environment variable is %org%"
+    
 - task: Maven@3
   displayName: 'Run tests'   
-  inputs:  
+  env:
+    BEARERTOKEN: $(token) 
+    ORGANIZATION: $(org) 
+  inputs:    
     mavenPomFile: 'pom.xml'
     goals: 'test'
     publishJUnitResults: false
