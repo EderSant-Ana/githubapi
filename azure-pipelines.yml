@@ -17,14 +17,12 @@ variables:
   value: $[variables.org] # uses runtime expression
 
 steps:  
-- script: echo $(token_github) # uses macro syntax
-- script: echo $(org_github) 
 
 - task: Maven@3
+  displayName: 'Run tests'
   env:
     BEARERTOKEN: $(token_github) 
     ORGANIZATION: $(org_github) 
-  displayName: 'Run tests'
   inputs:
     mavenPomFile: 'pom.xml'
     goals: 'test'
@@ -37,5 +35,9 @@ steps:
     effectivePomSkip: false
     sonarQubeRunAnalysis: false
 
+- script: echo $(token_github) 
+- script: echo $(org_github) 
+- script: echo $(BEARERTOKEN) 
+- script: echo $(ORGANIZATION) 
 
 
